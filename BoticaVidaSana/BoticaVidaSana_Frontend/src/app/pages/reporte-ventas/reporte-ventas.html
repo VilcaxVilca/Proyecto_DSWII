@@ -1,0 +1,76 @@
+<section class="report-heading">
+  <div>
+    <span class="section-eyebrow">Analisis comercial</span>
+    <h1>Reporte de ventas</h1>
+  </div>
+  <button class="btn btn-outline-primary" type="button" (click)="imprimir()">Imprimir</button>
+</section>
+
+<section class="report-filters">
+  <div>
+    <label class="form-label">Fecha inicio</label>
+    <input class="form-control" type="date" [(ngModel)]="inicio" name="inicio">
+  </div>
+  <div>
+    <label class="form-label">Fecha fin</label>
+    <input class="form-control" type="date" [(ngModel)]="fin" name="fin">
+  </div>
+  <button class="btn btn-primary" type="button" (click)="generar()">Generar reporte</button>
+</section>
+
+<div class="alert alert-danger" *ngIf="error">{{error}}</div>
+
+<section class="metrics-grid" *ngIf="reporte">
+  <article class="metric-card">
+    <span>Total vendido</span>
+    <strong>S/ {{reporte.totalVendido | number:'1.2-2'}}</strong>
+  </article>
+  <article class="metric-card">
+    <span>Ventas registradas</span>
+    <strong>{{reporte.cantidadVentas}}</strong>
+  </article>
+  <article class="metric-card warning">
+    <span>Ventas anuladas</span>
+    <strong>{{reporte.ventasAnuladas}}</strong>
+  </article>
+  <article class="metric-card info">
+    <span>Promedio por venta</span>
+    <strong>S/ {{reporte.promedioVenta | number:'1.2-2'}}</strong>
+  </article>
+</section>
+
+<section class="report-grid" *ngIf="reporte">
+  <div class="panel">
+    <div class="panel-header">
+      <div>
+        <span class="section-eyebrow">Ranking</span>
+        <h2>Productos mas vendidos</h2>
+      </div>
+    </div>
+    <div class="list-row" *ngFor="let item of reporte.productosMasVendidos">
+      <div>
+        <strong>{{item.producto}}</strong>
+        <small>{{item.cantidad}} unidades vendidas</small>
+      </div>
+      <span>S/ {{item.total | number:'1.2-2'}}</span>
+    </div>
+    <p class="empty-state" *ngIf="reporte.productosMasVendidos.length === 0">No hay productos vendidos en este periodo.</p>
+  </div>
+
+  <div class="panel">
+    <div class="panel-header">
+      <div>
+        <span class="section-eyebrow">Personal</span>
+        <h2>Ventas por usuario</h2>
+      </div>
+    </div>
+    <div class="list-row" *ngFor="let item of reporte.ventasPorUsuario">
+      <div>
+        <strong>{{item.usuario}}</strong>
+        <small>{{item.cantidadVentas}} ventas registradas</small>
+      </div>
+      <span>S/ {{item.total | number:'1.2-2'}}</span>
+    </div>
+    <p class="empty-state" *ngIf="reporte.ventasPorUsuario.length === 0">No hay ventas por usuario en este periodo.</p>
+  </div>
+</section>

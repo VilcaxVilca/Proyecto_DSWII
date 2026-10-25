@@ -1,0 +1,158 @@
+.report-heading,
+.report-filters,
+.panel-header,
+.list-row {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+}
+
+.report-heading {
+  margin-bottom: 18px;
+}
+
+.report-heading h1 {
+  font-size: 32px;
+  font-weight: 800;
+  margin: 4px 0 8px;
+}
+
+.report-heading p,
+.list-row small,
+.empty-state {
+  color: #64748b;
+  margin: 0;
+}
+
+.report-filters {
+  backdrop-filter: blur(18px);
+  background: rgba(255, 255, 255, 0.9);
+  border: 1px solid rgba(226, 232, 240, 0.82);
+  border-radius: 8px;
+  box-shadow: 0 18px 48px rgba(15, 23, 42, 0.07);
+  gap: 14px;
+  margin-bottom: 18px;
+  padding: 18px;
+}
+
+.report-filters div {
+  flex: 1;
+}
+
+.form-label {
+  color: #334155;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.metrics-grid,
+.report-grid {
+  display: grid;
+  gap: 18px;
+}
+
+.metrics-grid {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  margin-bottom: 18px;
+}
+
+.report-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.metric-card,
+.panel {
+  backdrop-filter: blur(18px);
+  background: rgba(255, 255, 255, 0.9);
+  border: 1px solid rgba(226, 232, 240, 0.82);
+  border-radius: 8px;
+  box-shadow: 0 18px 48px rgba(15, 23, 42, 0.08);
+  padding: 20px;
+}
+
+.metric-card span {
+  color: #64748b;
+  display: block;
+  font-size: 13px;
+  font-weight: 800;
+}
+
+.metric-card strong {
+  display: block;
+  font-size: 28px;
+  margin-top: 10px;
+}
+
+.metric-card.warning {
+  border-top: 4px solid #f59e0b;
+}
+
+.metric-card.info {
+  border-top: 4px solid #2563eb;
+}
+
+.panel h2 {
+  font-size: 20px;
+  font-weight: 800;
+  margin: 4px 0 0;
+}
+
+.list-row {
+  border-top: 1px solid #eef2f7;
+  padding: 15px 0;
+}
+
+.list-row strong,
+.list-row small {
+  display: block;
+}
+
+.list-row span {
+  color: #0f766e;
+  font-weight: 800;
+}
+
+@media (max-width: 1180px) {
+  .metrics-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media print {
+  .app-navbar,
+  .report-filters,
+  .report-heading .btn {
+    display: none !important;
+  }
+}
+
+@media (max-width: 900px) {
+  .report-heading,
+  .report-filters {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .report-filters div,
+  .report-filters button {
+    width: 100%;
+  }
+
+  .metrics-grid,
+  .report-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 640px) {
+  .report-heading h1 {
+    font-size: 26px;
+  }
+
+  .list-row,
+  .panel-header {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 8px;
+  }
+}

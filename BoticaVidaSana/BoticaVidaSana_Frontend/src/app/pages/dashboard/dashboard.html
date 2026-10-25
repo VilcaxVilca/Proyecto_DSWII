@@ -1,0 +1,86 @@
+<section class="dashboard-hero">
+  <div>
+    <span class="section-eyebrow">Sistema de botica</span>
+    <h1>Panel de control de inventario</h1>
+  </div>
+  <a class="btn btn-light" routerLink="/inventario">Administrar inventario</a>
+</section>
+
+<div class="alert alert-danger" *ngIf="error">{{error}}</div>
+
+<section class="metrics-grid" *ngIf="!cargando">
+  <article class="metric-card">
+    <span>Total productos</span>
+    <strong>{{totalProductos}}</strong>
+    <small>Medicamentos y articulos registrados</small>
+  </article>
+  <article class="metric-card">
+    <span>Productos activos</span>
+    <strong>{{productosActivos}}</strong>
+    <small>Disponibles para la venta</small>
+  </article>
+  <article class="metric-card warning">
+    <span>Stock bajo</span>
+    <strong>{{bajoStock.length}}</strong>
+    <small>Requieren reposicion prioritaria</small>
+  </article>
+  <article class="metric-card info">
+    <span>Ventas de hoy</span>
+    <strong>{{ventasDelDia.length}}</strong>
+    <small>S/ {{totalVendidoDia | number:'1.2-2'}} vendidos</small>
+  </article>
+</section>
+
+<section class="operations-grid" *ngIf="!cargando">
+  <div class="panel">
+    <div class="panel-header">
+      <div>
+        <span class="section-eyebrow">Alertas</span>
+        <h2>Productos con bajo stock</h2>
+      </div>
+      <span class="count-pill">{{bajoStock.length}}</span>
+    </div>
+    <div class="list-row" *ngFor="let producto of bajoStock.slice(0, 5)">
+      <div>
+        <strong>{{producto.nombre}}</strong>
+        <small>{{producto.codigo}} · {{producto.proveedor.razonSocial}}</small>
+      </div>
+      <span class="stock-chip">{{producto.stock}} und.</span>
+    </div>
+    <p class="empty-state" *ngIf="bajoStock.length === 0">No hay productos con stock critico.</p>
+  </div>
+
+  <div class="panel">
+    <div class="panel-header">
+      <div>
+        <span class="section-eyebrow">Control sanitario</span>
+        <h2>Vencimientos cercanos</h2>
+      </div>
+      <span class="count-pill blue">{{porVencer.length}}</span>
+    </div>
+    <div class="list-row" *ngFor="let producto of porVencer.slice(0, 5)">
+      <div>
+        <strong>{{producto.nombre}}</strong>
+        <small>{{producto.categoria.nombre}} · {{producto.codigo}}</small>
+      </div>
+      <span class="date-chip">{{producto.fechaVencimiento}}</span>
+    </div>
+    <p class="empty-state" *ngIf="porVencer.length === 0">No hay vencimientos dentro de los proximos 60 dias.</p>
+  </div>
+</section>
+
+<section class="panel inventory-summary" *ngIf="!cargando">
+  <div>
+    <span class="section-eyebrow">Alcance</span>
+    <h2>Categorias cubiertas</h2>
+    <p>{{categoriasUnicas || 'Aun no hay categorias registradas.'}}</p>
+  </div>
+  <div class="summary-actions">
+    <a class="btn btn-outline-primary" routerLink="/inventario">Actualizar inventario</a>
+    <a class="btn btn-primary" routerLink="/ventas">Registrar venta</a>
+  </div>
+</section>
+
+<div class="panel loading-panel" *ngIf="cargando">
+  Cargando informacion del inventario...
+</div>

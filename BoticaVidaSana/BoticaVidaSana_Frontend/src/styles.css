@@ -1,0 +1,62 @@
+body {
+  background:
+    linear-gradient(180deg, rgba(15, 118, 110, 0.08), rgba(240, 253, 250, 0.1) 340px),
+    url('/img/botica-fondo.png') center top / cover fixed no-repeat,
+    #f6f8fb;
+  color: #172033;
+  font-family: Arial, Helvetica, sans-serif;
+  min-height: 100vh;
+}
+
+.card,
+.panel {
+  backdrop-filter: blur(18px);
+  background: rgba(255, 255, 255, 0.88);
+  border: 1px solid rgba(226, 232, 240, 0.82);
+  border-radius: 8px;
+  box-shadow: 0 18px 48px rgba(15, 23, 42, 0.08);
+}
+
+.section-eyebrow {
+  color: #0f766e;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0;
+  text-transform: uppercase;
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, #16a34a, #0f8a3d);
+  border-color: #0f8a3d;
+  font-weight: 800;
+}
+
+.btn-primary:hover,
+.btn-primary:focus {
+  background: linear-gradient(135deg, #15803d, #087a31);
+  border-color: #087a31;
+}
+
+.btn-outline-primary {
+  border-color: #0f766e;
+  color: #0f766e;
+}
+
+.btn-outline-primary:hover,
+.btn-outline-primary:focus {
+  background: #0f766e;
+  border-color: #0f766e;
+}
+
+.table-responsive {
+  border-radius: 8px;
+}
+
+@media (max-width: 900px), (max-height: 760px) {
+  body {
+    background:
+      linear-gradient(180deg, rgba(15, 118, 110, 0.08), rgba(240, 253, 250, 0.1) 340px),
+      url('/img/botica-fondo.png') center top / cover scroll no-repeat,
+      #f6f8fb;
+  }
+}

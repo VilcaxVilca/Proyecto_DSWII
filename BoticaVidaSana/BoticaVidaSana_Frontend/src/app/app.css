@@ -1,0 +1,178 @@
+.app-navbar {
+  backdrop-filter: blur(18px);
+  background: linear-gradient(135deg, rgba(15, 118, 110, 0.96), rgba(22, 163, 74, 0.94));
+  border-bottom: 1px solid rgba(255, 255, 255, 0.18);
+  box-shadow: 0 18px 46px rgba(15, 118, 110, 0.2);
+}
+
+.navbar-brand {
+  align-items: center;
+  color: #ffffff;
+  display: flex;
+  gap: 12px;
+  line-height: 1.1;
+}
+
+.navbar-brand:hover,
+.navbar-brand:focus {
+  color: #ffffff;
+}
+
+.navbar-brand small {
+  color: #d8fbf5;
+  display: block;
+  font-size: 12px;
+  font-weight: 500;
+  margin-top: 3px;
+}
+
+.nav-logo {
+  display: block;
+  filter: drop-shadow(0 8px 14px rgba(5, 46, 22, 0.16));
+  height: 54px;
+  object-fit: contain;
+  width: 72px;
+}
+
+.navbar-nav {
+  flex-direction: row;
+  gap: 6px;
+}
+
+.nav-link {
+  border-radius: 8px;
+  color: #d8fbf5;
+  font-weight: 800;
+  padding: 10px 14px;
+}
+
+.nav-link:hover,
+.nav-link.active {
+  background: rgba(255, 255, 255, 0.16);
+  color: #ffffff;
+}
+
+.session-pill {
+  align-items: center;
+  background: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  border-radius: 999px;
+  color: #ecfeff;
+  display: inline-flex;
+  font-size: 13px;
+  font-weight: 700;
+  padding: 8px 12px;
+}
+
+.logout-button {
+  background: #ffffff;
+  border: 0;
+  border-radius: 8px;
+  color: #0f766e;
+  font-weight: 800;
+  padding: 9px 13px;
+}
+
+.logout-button:hover,
+.logout-button:focus {
+  background: #ecfeff;
+}
+
+.app-shell {
+  width: 100%;
+  max-width: 1880px;
+  margin: 0 auto;
+  padding: 30px 28px 44px;
+  position: relative;
+  box-sizing: border-box;
+}
+
+.login-shell {
+  min-height: 100vh;
+}
+
+@media (max-width: 1180px) {
+  .container-fluid {
+    padding-left: 14px !important;
+    padding-right: 14px !important;
+  }
+
+  .nav-logo {
+    height: 44px;
+    width: 58px;
+  }
+
+  .navbar-brand strong {
+    font-size: 16px;
+  }
+
+  .nav-link {
+    font-size: 14px;
+    padding: 8px 10px;
+  }
+
+  .session-pill {
+    font-size: 12px;
+    padding: 7px 9px;
+  }
+
+  .logout-button {
+    font-size: 13px;
+    padding: 8px 10px;
+  }
+
+  .app-shell {
+    max-width: 1120px;
+    padding: 22px 16px 34px;
+  }
+}
+
+@media (max-width: 920px) {
+  .container-fluid {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .navbar-nav {
+    flex-wrap: wrap;
+    width: 100%;
+  }
+}
+
+@media (max-width: 720px) {
+  .container-fluid {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 14px;
+  }
+
+  .navbar-nav {
+    flex-wrap: wrap;
+  }
+
+  .app-shell {
+    padding: 22px 14px 34px;
+  }
+}
+
+@media (max-width: 520px) {
+  .nav-logo {
+    height: 38px;
+    width: 50px;
+  }
+
+  .navbar-nav {
+    gap: 6px;
+  }
+
+  .nav-link {
+    flex: 1 1 auto;
+    text-align: center;
+  }
+
+  .session-pill,
+  .logout-button {
+    width: 100%;
+  }
+}

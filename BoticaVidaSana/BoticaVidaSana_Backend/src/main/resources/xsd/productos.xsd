@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           targetNamespace="http://cibertec.pe/botica/soap"
+           xmlns:tns="http://cibertec.pe/botica/soap"
+           elementFormDefault="qualified">
+
+    <!-- Consultar todos los productos -->
+    <xs:element name="consultarProductosRequest">
+        <xs:complexType/>
+    </xs:element>
+
+    <xs:element name="consultarProductosResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="producto" minOccurs="0"
+                            maxOccurs="unbounded">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element name="id" type="xs:long"/>
+                            <xs:element name="codigo" type="xs:string"/>
+                            <xs:element name="nombre" type="xs:string"/>
+                            <xs:element name="precio" type="xs:decimal"/>
+                            <xs:element name="stock" type="xs:int"/>
+                            <xs:element name="fechaVencimiento"
+                                        type="xs:date"/>
+                            <xs:element name="activo" type="xs:boolean"/>
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <!-- Buscar producto por ID -->
+    <xs:element name="buscarProductoPorIdRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="id" type="xs:long"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="buscarProductoPorIdResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="encontrado" type="xs:boolean"/>
+                <xs:element name="id" type="xs:long" minOccurs="0"/>
+                <xs:element name="codigo" type="xs:string" minOccurs="0"/>
+                <xs:element name="nombre" type="xs:string" minOccurs="0"/>
+                <xs:element name="precio" type="xs:decimal" minOccurs="0"/>
+                <xs:element name="stock" type="xs:int" minOccurs="0"/>
+                <xs:element name="fechaVencimiento"
+                            type="xs:date" minOccurs="0"/>
+                <xs:element name="activo" type="xs:boolean" minOccurs="0"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <!-- Buscar productos por nombre -->
+    <xs:element name="buscarProductosPorNombreRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="nombre" type="xs:string"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="buscarProductosPorNombreResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="producto" minOccurs="0"
+                            maxOccurs="unbounded">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element name="id" type="xs:long"/>
+                            <xs:element name="codigo" type="xs:string"/>
+                            <xs:element name="nombre" type="xs:string"/>
+                            <xs:element name="precio" type="xs:decimal"/>
+                            <xs:element name="stock" type="xs:int"/>
+                            <xs:element name="fechaVencimiento"
+                                        type="xs:date"/>
+                            <xs:element name="activo" type="xs:boolean"/>
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <!-- Contar productos -->
+    <xs:element name="contarProductosRequest">
+        <xs:complexType/>
+    </xs:element>
+
+    <xs:element name="contarProductosResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="total" type="xs:long"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+</xs:schema>

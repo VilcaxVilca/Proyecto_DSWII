@@ -1,0 +1,29 @@
+<nav class="navbar navbar-expand-lg app-navbar" *ngIf="estaAutenticado()">
+  <div class="container-fluid px-4">
+    <a class="navbar-brand" routerLink="/panel">
+      <img class="nav-logo" src="/img/botica-logo.png" alt="Botica Sana">
+      <span>
+        <strong>Botica Sana</strong>
+      </span>
+    </a>
+    <div class="navbar-nav ms-auto">
+      <a class="nav-link" routerLink="/panel" routerLinkActive="active">
+        Panel
+      </a>
+      <a class="nav-link" routerLink="/inventario" routerLinkActive="active">
+        Inventario
+      </a>
+      <a class="nav-link" routerLink="/ventas" routerLinkActive="active">
+        Ventas
+      </a>
+      <a class="nav-link" routerLink="/reporte-ventas" routerLinkActive="active" *ngIf="puedeVerReportes()">
+        Reportes
+      </a>
+      <span class="session-pill">{{rolActual()}}: {{usuarioActual()}}</span>
+      <button class="logout-button" type="button" (click)="cerrarSesion()">Cerrar sesion</button>
+    </div>
+  </div>
+</nav>
+<main [class.app-shell]="estaAutenticado()" [class.login-shell]="!estaAutenticado()">
+  <router-outlet></router-outlet>
+</main>

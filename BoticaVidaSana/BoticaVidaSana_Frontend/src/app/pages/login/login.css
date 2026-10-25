@@ -1,0 +1,218 @@
+.login-layout {
+  align-items: center;
+  background: url('/img/botica-fondo.png') center / cover no-repeat;
+  display: grid;
+  gap: clamp(24px, 4vw, 70px);
+  grid-template-columns: minmax(300px, 0.95fr) minmax(340px, 480px);
+  min-height: 100vh;
+  overflow-x: hidden;
+  padding: clamp(20px, 5vh, 56px) clamp(18px, 7vw, 120px);
+}
+
+.login-brand {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  min-height: min(520px, 70vh);
+}
+
+.login-brand img {
+  display: block;
+  filter: drop-shadow(0 28px 46px rgba(22, 101, 52, 0.2));
+  max-width: min(500px, 42vw);
+  width: 100%;
+}
+
+.login-card {
+  backdrop-filter: blur(18px);
+  background: rgba(255, 255, 255, 0.9);
+  border: 1px solid rgba(255, 255, 255, 0.76);
+  border-radius: 8px;
+  box-shadow: 0 24px 70px rgba(15, 23, 42, 0.16);
+}
+
+.login-card .card-body {
+  padding: clamp(28px, 4vw, 44px);
+}
+
+.login-mark {
+  align-items: center;
+  background: linear-gradient(135deg, #dcfce7, #bbf7d0);
+  border-radius: 999px;
+  color: #10853a;
+  display: flex;
+  font-size: 32px;
+  font-weight: 900;
+  height: 74px;
+  justify-content: center;
+  margin: 0 auto 18px;
+  width: 74px;
+}
+
+.login-card h2 {
+  color: #064e3b;
+  font-size: 32px;
+  font-weight: 900;
+  margin: 0;
+  text-align: center;
+}
+
+.login-subtitle {
+  color: #7b7f88;
+  font-size: 17px;
+  font-weight: 600;
+  margin: 8px 0 28px;
+  text-align: center;
+}
+
+.form-label {
+  color: #0f172a;
+  font-size: 14px;
+  font-weight: 800;
+}
+
+.form-control {
+  background: rgba(255, 255, 255, 0.88);
+  border: 1px solid #d7ded8;
+  border-radius: 8px;
+  color: #0f172a;
+  font-size: 16px;
+  min-height: 56px;
+  padding: 12px 16px;
+}
+
+.form-control:focus {
+  border-color: #22c55e;
+  box-shadow: 0 0 0 4px rgba(34, 197, 94, 0.13);
+}
+
+.login-options {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+  margin: 12px 0 22px;
+  min-height: 22px;
+}
+
+.login-options a {
+  color: #168a35;
+  font-size: 14px;
+  font-weight: 800;
+  text-decoration: none;
+}
+
+.login-options a:hover {
+  color: #0f6c2c;
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, #38b237, #149235);
+  border: 0;
+  border-radius: 8px;
+  box-shadow: 0 15px 32px rgba(22, 163, 74, 0.28);
+  font-size: 17px;
+  font-weight: 900;
+  min-height: 56px;
+}
+
+.btn-primary:hover,
+.btn-primary:focus {
+  background: linear-gradient(135deg, #2f9d2f, #0f7d2d);
+}
+
+@media (max-width: 1180px) {
+  .login-layout {
+    grid-template-columns: minmax(280px, 0.9fr) minmax(330px, 430px);
+  }
+
+  .login-brand img {
+    max-width: min(390px, 40vw);
+  }
+}
+
+@media (max-height: 760px) and (min-width: 981px) {
+  .login-layout {
+    padding-bottom: 20px;
+    padding-top: 20px;
+  }
+
+  .login-brand {
+    min-height: 440px;
+  }
+
+  .login-brand img {
+    max-width: min(380px, 38vw);
+  }
+
+  .login-card .card-body {
+    padding: 26px 34px;
+  }
+
+  .login-mark {
+    font-size: 26px;
+    height: 58px;
+    margin-bottom: 10px;
+    width: 58px;
+  }
+
+  .login-card h2 {
+    font-size: 28px;
+  }
+
+  .login-subtitle {
+    margin: 6px 0 18px;
+  }
+
+  .form-control,
+  .btn-primary {
+    min-height: 50px;
+  }
+
+  .login-options {
+    margin: 8px 0 16px;
+  }
+}
+
+@media (max-width: 980px) {
+  .login-layout {
+    gap: 28px;
+    grid-template-columns: 1fr;
+    padding: 32px 18px;
+  }
+
+  .login-brand {
+    min-height: auto;
+  }
+
+  .login-brand img {
+    max-width: 360px;
+  }
+
+  .login-card {
+    margin: 0 auto;
+    max-width: 500px;
+    width: 100%;
+  }
+}
+
+@media (max-width: 560px) {
+  .login-layout {
+    padding: 24px 14px;
+  }
+
+  .login-card .card-body {
+    padding: 30px 22px;
+  }
+
+  .login-brand img {
+    max-width: 280px;
+  }
+
+  .login-card h2 {
+    font-size: 28px;
+  }
+
+  .login-subtitle {
+    font-size: 15px;
+  }
+}

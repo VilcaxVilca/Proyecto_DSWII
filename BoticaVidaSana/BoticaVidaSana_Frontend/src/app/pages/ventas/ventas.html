@@ -1,0 +1,122 @@
+<section class="page-heading">
+  <div>
+    <span class="section-eyebrow">Caja y atencion</span>
+    <h1>Registro de ventas</h1>
+  </div>
+  <span class="api-badge">Descuenta stock automaticamente</span>
+</section>
+
+<div class="row g-4">
+  <div class="col-lg-4">
+    <div class="card sale-card">
+      <div class="card-body">
+        <div class="form-title">
+          <span>Nueva operacion</span>
+          <h2>Datos de la venta</h2>
+        </div>
+        <div class="mb-3">
+          <label class="form-label">Cliente</label>
+          <input class="form-control" [(ngModel)]="cliente" name="cliente">
+        </div>
+        <div class="mb-3">
+          <label class="form-label">Metodo de pago</label>
+          <select class="form-select" [(ngModel)]="metodoPago" name="metodoPago">
+            <option>Efectivo</option>
+            <option>Tarjeta</option>
+            <option>Yape</option>
+            <option>Plin</option>
+          </select>
+        </div>
+        <div class="mb-3">
+          <label class="form-label">Producto</label>
+          <select class="form-select" [(ngModel)]="productoId" name="productoId">
+            <option [ngValue]="0">Seleccionar producto</option>
+            <option *ngFor="let producto of productos" [ngValue]="producto.id">
+              {{producto.nombre}} - S/ {{producto.precio | number:'1.2-2'}} - Stock {{producto.stock}}
+            </option>
+          </select>
+        </div>
+        <div class="row">
+          <div class="col-6 mb-3">
+            <label class="form-label">Cantidad</label>
+            <input class="form-control" type="number" min="1" [(ngModel)]="cantidad" name="cantidad">
+          </div>
+          <div class="col-6 mb-3 d-flex align-items-end">
+            <button class="btn btn-outline-primary w-100" type="button" (click)="agregarProducto()">Agregar</button>
+          </div>
+        </div>
+
+        <div class="cart-list" *ngIf="carrito.length > 0">
+          <div class="cart-row" *ngFor="let item of carrito">
+            <div>
+              <strong>{{productoCarrito(item)?.nombre}}</strong>
+              <small>{{item.cantidad}} und. - S/ {{subtotal(item) | number:'1.2-2'}}</small>
+            </div>
+            <button type="button" (click)="quitarProducto(item.productoId)">Quitar</button>
+          </div>
+        </div>
+        <div class="sale-total">
+          <span>Total</span>
+          <strong>S/ {{totalVenta | number:'1.2-2'}}</strong>
+        </div>
+        <button class="btn btn-primary w-100" type="button" (click)="registrar()">Registrar venta</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-lg-8">
+    <div class="card sale-card">
+      <div class="card-body">
+        <div class="table-toolbar">
+          <div>
+            <h2>Listado de ventas</h2>
+          </div>
+          <div class="filters">
+            <input class="form-control" type="date" [(ngModel)]="inicio" name="inicio">
+            <input class="form-control" type="date" [(ngModel)]="fin" name="fin">
+            <button class="btn btn-outline-primary" type="button" (click)="listar()">Filtrar</button>
+          </div>
+        </div>
+
+        <div class="alert alert-success" *ngIf="mensaje">{{mensaje}}</div>
+        <div class="alert alert-danger" *ngIf="error">{{error}}</div>
+
+        <div class="table-responsive">
+          <table class="table align-middle">
+            <thead>
+              <tr>
+                <th>Codigo</th>
+                <th>Fecha</th>
+                <th>Cliente</th>
+                <th>Usuario</th>
+                <th>Total</th>
+                <th>Estado</th>
+                <th class="text-end">Acciones</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let venta of ventas">
+                <td><span class="code-pill">{{venta.codigo}}</span></td>
+                <td>{{venta.fecha | date:'dd/MM/yyyy HH:mm'}}</td>
+                <td>{{venta.cliente}}</td>
+                <td>{{venta.usuario}}</td>
+                <td class="price">S/ {{venta.total | number:'1.2-2'}}</td>
+                <td>
+                  <span class="state-pill" [class.cancelled]="venta.estado === 'ANULADA'">{{venta.estado}}</span>
+                </td>
+                <td class="text-end">
+                  <button class="btn btn-sm btn-outline-danger" type="button" (click)="anular(venta)" [disabled]="!puedeAnular() || venta.estado === 'ANULADA'">
+                    Anular
+                  </button>
+                </td>
+              </tr>
+              <tr *ngIf="ventas.length === 0">
+                <td colspan="7" class="text-center text-muted py-4">No hay ventas registradas.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
